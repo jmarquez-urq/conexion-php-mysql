@@ -5,13 +5,15 @@ class Usuario
     protected $usuario;
     protected $nombre;
     protected $apellido;
+    protected $email;
 
-    public function __construct($usuario, $nombre, $apellido, $id = null)
+    public function __construct($usuario, $nombre, $apellido, $email, $id = null)
     {
         $this->id = $id;
         $this->nombre = $nombre;
         $this->apellido = $apellido;
         $this->usuario = $usuario;
+        $this->email = $email;
     }
 
     public function getId() {return $this->id;}
@@ -20,6 +22,7 @@ class Usuario
     public function getNombre() {return $this->nombre;}
     public function getApellido() {return $this->apellido;}
     public function getNombreApellido() {return "$this->nombre $this->apellido";}
+    public function getEmail() {return $this->email;}
 }
 
 

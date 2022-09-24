@@ -20,10 +20,10 @@ class ControladorSesion
         }
     }
 
-    public function create($nombre_usuario, $nombre, $apellido, $clave)
+    public function create($nombre_usuario, $nombre, $apellido, $email, $clave)
     {
         $repo = new RepositorioUsuario();
-        $usuario = new Usuario($nombre_usuario, $nombre, $apellido);
+        $usuario = new Usuario($nombre_usuario, $nombre, $apellido, $email);
         $id = $repo->save($usuario, $clave);
         if ($id === false) {
             return [ false, "Error al crear el usuario"];

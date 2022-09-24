@@ -3,7 +3,7 @@ require_once 'clases/ControladorSesion.php';
 if (isset($_POST['usuario']) && isset($_POST['clave'])) {
     $cs = new ControladorSesion();
     $result = $cs->create($_POST['usuario'], $_POST['nombre'], 
-                          $_POST['apellido'], $_POST['clave']);
+                          $_POST['apellido'], $_POST['email'], $_POST['clave']);
     if( $result[0] === true ) {
         $redirigir = 'home.php?mensaje='.$result[1];
     }
@@ -39,6 +39,7 @@ if (isset($_POST['usuario']) && isset($_POST['clave'])) {
             <input name="clave" type="password" class="form-control form-control-lg" placeholder="Contraseña"><br>
             <input name="nombre" class="form-control form-control-lg" placeholder="Nombre"><br>
             <input name="apellido" class="form-control form-control-lg" placeholder="Apellido"><br>
+            <input type="email" name="email" class="form-control form-control-lg" placeholder="Email"><br>
             <input type="submit" value="Registrarse" class="btn btn-primary">
         </form>        
       </div> 
