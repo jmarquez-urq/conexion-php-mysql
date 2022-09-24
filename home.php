@@ -30,6 +30,7 @@ if (isset($_SESSION['usuario'])) {
         <h3>Hola <?php echo $nomApe;?></h3>
         <p><?php echo $usuario->getEmail();?></p>
         <p><a href="datos_modificar.php">Modificar mis datos</a></p>
+        <p><a href="confirmar_delete.php" class="btn btn-danger">Eliminar mis datos</a></p>
         <p><a href="logout.php">Cerrar sesión</a></p>
       </div>
     </body>

@@ -54,4 +54,16 @@ class ControladorSesion
             return [false, "Error al actualizar datos"];
         }
     }
+
+    public function eliminar(Usuario $usuario)
+    {
+        $repo = new RepositorioUsuario();
+        // Eliminamos el usuario de la BD con el método eliminar de la clase
+        // Usuario.
+        if($repo->eliminar($usuario)) {
+            return [true, "Usuario eliminado correctamente"];
+        } else {
+            return [false, "Error al eliminar el usuario"];
+        }
+    }
 }

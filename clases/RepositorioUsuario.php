@@ -87,5 +87,24 @@ class RepositorioUsuario
             return false;
         }
     }
+
+    public function eliminar(Usuario $u)
+    {
+        // Preparamos la query del DELETE
+        $q = "DELETE FROM usuarios WHERE id = ?";
+        $query = self::$conexion->prepare($q);
+
+        $id = $u->getId();
+
+        // Asignamos el valor para reemplazar el "?" en la query
+        $query->bind_param("d", $id);
+
+        // Retornamos true si la query tiene éxito, false si fracasa
+        if ($query->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
