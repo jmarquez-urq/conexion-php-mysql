@@ -23,6 +23,25 @@ class Usuario
     public function getApellido() {return $this->apellido;}
     public function getNombreApellido() {return "$this->nombre $this->apellido";}
     public function getEmail() {return $this->email;}
+
+    /**
+     * Actualiza los datos del usuario. (Esto es un comentario "estandarizado",
+     * pero no tiene efecto en el código).
+     *
+     * @param string $nombre_usuario El nuevo nombre de usuario.
+     * @param string $nombre         El nombre de pila del usuario.
+     * @param string $apellido       El apellido del usuario
+     * @param string $email          El email del usuario
+     *
+     * @return null
+     */
+    public function setDatos($nombre_usuario, $nombre, $apellido, $email)
+    {
+        $this->usuario = $nombre_usuario;
+        $this->nombre = $nombre;
+        $this->apellido = $apellido;
+        $this->email = $email;
+    }
 }
 
 

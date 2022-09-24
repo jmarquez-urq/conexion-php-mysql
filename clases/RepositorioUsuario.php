@@ -19,7 +19,7 @@ class RepositorioUsuario
                 self::$conexion = null;
                 die($error);
             }
-            self::$conexion->set_charset('utf8'); 
+            self::$conexion->set_charset('utf8');
         }
     }
 
@@ -60,8 +60,32 @@ class RepositorioUsuario
         else {
             return false;
         }
+    }
 
+    public function actualizar(Usuario $u)
+    {
+        // Preparamos la query del update
+        $q = "UPDATE usuarios ";
+        $q.= "SET usuario = ?, nombre = ?, apellido = ?, email = ? ";
+        $q.= "WHERE id = ?";
+        $query = self::$conexion->prepare($q);
 
+        // Obtenemos los nuevos valores desde el objeto:
+        $usuario = $u->getUsuario();
+        $nombre = $u->getNombre();
+        $apellido = $u->getApellido();
+        $email = $u->getEmail();
+        $id = $u->getId();
+
+        // Asignamos los valores para reemplazar los "?" en la query
+        $query->bind_param("ssssd", $usuario, $nombre, $apellido, $email, $id);
+
+        // Retornamos true si la query tiene éxito, false si fracasa
+        if ($query->execute()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
-    
+

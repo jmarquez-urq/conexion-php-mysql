@@ -19,12 +19,19 @@ if (isset($_SESSION['usuario'])) {
     <body class="container">
       <div class="jumbotron text-center">
       <h1>Sistema bancario</h1>
-      </div>    
+      </div>
       <div class="text-center">
+        <?php
+            if (isset($_GET['mensaje'])) {
+                echo '<div id="mensaje" class="alert alert-primary text-center">
+                    <p>'.$_GET['mensaje'].'</p></div>';
+            }
+        ?>
         <h3>Hola <?php echo $nomApe;?></h3>
         <p><?php echo $usuario->getEmail();?></p>
+        <p><a href="datos_modificar.php">Modificar mis datos</a></p>
         <p><a href="logout.php">Cerrar sesión</a></p>
-      </div> 
+      </div>
     </body>
 </html>
 

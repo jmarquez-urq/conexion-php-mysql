@@ -35,4 +35,23 @@ class ControladorSesion
             return [ true, "Usuario creado correctamente" ];
         }
     }
+
+    public function modificar($nombre_usuario, $nombre, $apellido, $email, Usuario $usuario)
+    {
+        $repo = new RepositorioUsuario();
+        // Actualizamos los datos del usuario con el método setDatos de la clase Usuario:
+        $usuario->setDatos($nombre_usuario, $nombre, $apellido, $email);
+
+        // Actualizadmos los valores en la BD, con el método actualizar del repositorio:
+        if ($repo->actualizar($usuario)) {
+            // Si se actualizó correctamente, actualizamos la variable de sesión
+            session_start();
+            $_SESSION['usuario'] = serialize($usuario);
+            // y retornamos valor de éxito
+            return [true, "Datos actualizados correctamente"];
+        } else {
+            // Si hubo error al actualizar, retornamos advertencia.
+            return [false, "Error al actualizar datos"];
+        }
+    }
 }
